@@ -11,6 +11,12 @@ export const App = () => {
     setIncompleteTodos(newIncompleteTodos);
     setTodoText("");
   };
+
+  const onClickDelete = (index) => {
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+    setIncompleteTodos(newIncompleteTodos);
+  };
   // useState
   const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState(["TODO１", "TODO2"]);
@@ -29,12 +35,12 @@ export const App = () => {
       </div>
       <div className="incomplete-area">
         <p className="title">未完了リスト</p>
-        {incompleteTodos.map((todo) => {
+        {incompleteTodos.map((todo, index) => {
           return (
             <div key={todo} className="list-row">
               <li>{todo}</li>
               <button>DONE</button>
-              <button>DEL</button>
+              <button onClick={() => onClickDelete(index)}>DEL</button>
             </div>
           );
         })}
