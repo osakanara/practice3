@@ -16,6 +16,12 @@ button {
   margin-right: 8px;
 }
 
+button:hover {
+  background-color: #7b3cff;
+  color: white;
+  cursor: pointer;
+}
+
 li {
   margin-right: 8px;
 }
