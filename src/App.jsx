@@ -3,6 +3,7 @@ import "./styles.css";
 
 export const App = () => {
   // useState
+  const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState(["TODO１", "TODO2"]);
   const [completeTodos, setCompleteTodos] = useState(["TODO3", "TODO4"]);
 
