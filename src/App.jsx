@@ -20,8 +20,8 @@ export const App = () => {
           return (
             <div className="list-row">
               <li>{todo}</li>
-              <button>完了</button>
-              <button>削除</button>
+              <button>DONE</button>
+              <button>DEL</button>
             </div>
           );
         })}
@@ -32,7 +32,7 @@ export const App = () => {
           return (
             <div className="list-row">
               <li>{todo}</li>
-              <button>戻す</button>
+              <button>BACK</button>
             </div>
           );
         })}
