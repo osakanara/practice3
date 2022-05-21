@@ -17,6 +17,16 @@ export const App = () => {
     newIncompleteTodos.splice(index, 1);
     setIncompleteTodos(newIncompleteTodos);
   };
+
+  const onClickDone = (index) => {
+    // 未完了リストから要素を削除
+    const newIncompleteTodos = [...incompleteTodos];
+    newIncompleteTodos.splice(index, 1);
+    setIncompleteTodos(newIncompleteTodos);
+    // 完了リストに要素を追加
+    const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
+    setCompleteTodos(newCompleteTodos);
+  };
   // useState
   const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState(["TODO１", "TODO2"]);
@@ -39,7 +49,7 @@ export const App = () => {
           return (
             <div key={todo} className="list-row">
               <li>{todo}</li>
-              <button>DONE</button>
+              <button onClick={() => onClickDone(index)}>DONE</button>
               <button onClick={() => onClickDelete(index)}>DEL</button>
             </div>
           );
@@ -47,7 +57,7 @@ export const App = () => {
       </div>
       <div className="complete-area">
         <p className="title">完了リスト</p>
-        {completeTodos.map((todo) => {
+        {completeTodos.map((todo, index) => {
           return (
             <div key={todo} className="list-row">
               <li>{todo}</li>
