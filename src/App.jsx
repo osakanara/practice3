@@ -27,6 +27,16 @@ export const App = () => {
     const newCompleteTodos = [...completeTodos, incompleteTodos[index]];
     setCompleteTodos(newCompleteTodos);
   };
+
+  const onClickBack = (index) => {
+    // 完了リストから要素を削除
+    const newCompleteTodos = [...completeTodos];
+    newCompleteTodos.splice(index, 1);
+    setCompleteTodos(newCompleteTodos);
+    // 未完了リストに要素を追加
+    const newIncompleteTodos = [...incompleteTodos, completeTodos[index]];
+    setIncompleteTodos(newIncompleteTodos);
+  };
   // useState
   const [todoText, setTodoText] = useState("");
   const [incompleteTodos, setIncompleteTodos] = useState(["TODO１", "TODO2"]);
@@ -61,7 +71,7 @@ export const App = () => {
           return (
             <div key={todo} className="list-row">
               <li>{todo}</li>
-              <button>BACK</button>
+              <button onClick={() => onClickBack(index)}>BACK</button>
             </div>
           );
         })}
